@@ -4,7 +4,7 @@ name := "potassium"
 
 version := "0.1-SNAPSHOT"
 
-scalaVersion := "2.11.7"
+autoScalaLibrary := false
 
 resolvers += "WPILib-Maven" at "http://team846.github.io/wpilib-maven"
 
