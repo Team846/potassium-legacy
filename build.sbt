@@ -13,4 +13,5 @@ libraryDependencies += "edu.wpi.first" % "wpilib" % "0.1.0.201502241928"
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.3"
 
 publishMavenStyle := true
+crossPaths := false
 publishTo := Some(Resolver.file("gh-pages-repo", baseDirectory.value / "repo"))
