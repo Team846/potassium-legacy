@@ -8,6 +8,12 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public abstract class Component<Controller> {
+    private static LinkedList<Component<?>> components = new LinkedList<>();
+
+    public static void updateComponents() {
+        components.forEach(Component::tick);
+    }
+
     private Controller currentController;
     private final Controller defaultController;
     private LinkedList<Tuple2<Supplier<Boolean>, Function<Controller, Controller>>> safeties = new LinkedList<>();
