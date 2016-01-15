@@ -67,6 +67,10 @@ public abstract class Component<Controller> {
                     }
                 );
 
+        if (toUse instanceof PreUseTick) {
+            ((PreUseTick) toUse).preUseTick();
+        }
+
         setOutputs(toUse);
     }
 
