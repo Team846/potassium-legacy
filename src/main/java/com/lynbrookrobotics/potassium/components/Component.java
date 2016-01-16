@@ -80,5 +80,5 @@ public abstract class Component<Controller> {
      * Uses the values provided by the controller to control actuators
      * @param controller the controller to get data about component output from
      */
-    public abstract void setOutputs(Controller controller);
+    protected abstract void setOutputs(Controller controller);
 }
