@@ -25,6 +25,8 @@ public abstract class Component<Controller> {
     public Component(Controller defaultController) {
         this.defaultController = defaultController;
         resetToDefault();
+
+        components.add(this);
     }
 
     /**
