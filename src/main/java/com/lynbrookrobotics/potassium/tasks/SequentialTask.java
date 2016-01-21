@@ -29,6 +29,7 @@ public class SequentialTask extends FiniteTask {
 
     @Override
     protected void startTask() {
+        currentState = SequentialState.RUNNING_FIRST;
         firstTask.init();
     }
 

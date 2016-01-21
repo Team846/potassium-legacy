@@ -22,9 +22,9 @@ public class InGameState extends SteadyEvent {
     protected void checkForTrigger() {
         if (expectedState == GameState.DISABLED && station.isDisabled()) {
             trigger();
-        } else if (expectedState == GameState.AUTONOMOUS && station.isAutonomous()) {
+        } else if (expectedState == GameState.AUTONOMOUS && station.isAutonomous() && station.isEnabled()) {
             trigger();
-        } else if (expectedState == GameState.ENABLED && station.isEnabled()) {
+        } else if (expectedState == GameState.ENABLED && station.isOperatorControl() && station.isEnabled()) {
             trigger();
         }
     }

@@ -11,6 +11,15 @@ public abstract class Task {
         task.init();
     }
 
+    public static void abortTask(Task task) {
+        currentTask.ifPresent(cur -> {
+            if (cur == task) {
+                cur.abort();
+                currentTask = Optional.empty();
+            }
+        });
+    }
+
     public static void updateCurrentTask() {
         currentTask.ifPresent(Task::tick);
     }
