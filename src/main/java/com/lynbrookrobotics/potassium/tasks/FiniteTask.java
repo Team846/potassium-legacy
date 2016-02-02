@@ -72,6 +72,7 @@ public abstract class FiniteTask extends Task {
     protected void finished() {
         logger.debug("I have been marked finished");
         isFinished = true;
+        endTask();
     }
 
     /***
