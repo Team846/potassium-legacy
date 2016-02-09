@@ -8,33 +8,34 @@ import java.util.LinkedList;
  * Example: button is released
  */
 public abstract class ImpulseEvent extends Event {
-    private LinkedList<Runnable> handlers = new LinkedList<>();
+  private LinkedList<Runnable> handlers = new LinkedList<>();
 
-    /**
-     * Runs a single loop of this event, where it is checked if the event should be triggered
-     */
-    @Override
-    public void tick() {
-        checkForTrigger();
-    }
+  /**
+   * Runs a single loop of this event, where it is checked if the event should be triggered
+   */
+  @Override
+  public void tick() {
+    checkForTrigger();
+  }
 
-    /**
-     * Attaches a handler to this event to be called when the event is triggered
-     * @param handler the handler to attach
-     */
-    public void forEach(Runnable handler) {
-        handlers.add(handler);
-    }
+  /**
+   * Attaches a handler to this event to be called when the event is triggered
+   *
+   * @param handler the handler to attach
+   */
+  public void forEach(Runnable handler) {
+    handlers.add(handler);
+  }
 
-    /**
-     * A call to this method from checkForTrigger will mark the event as triggered for a single loop
-     */
-    protected void trigger() {
-        handlers.forEach(Runnable::run);
-    }
+  /**
+   * A call to this method from checkForTrigger will mark the event as triggered for a single loop
+   */
+  protected void trigger() {
+    handlers.forEach(Runnable::run);
+  }
 
-    /**
-     * What to do to check if the event should be triggered
-     */
-    protected abstract void checkForTrigger();
+  /**
+   * What to do to check if the event should be triggered
+   */
+  protected abstract void checkForTrigger();
 }

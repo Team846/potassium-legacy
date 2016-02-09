@@ -6,8 +6,8 @@ package com.lynbrookrobotics.potassium.components;
  * Examples: a controller that needs to run PID logic before motor speeds are requested from it
  */
 public interface PreUseTick {
-    /**
-     * What to run before the controller is used during a component update
-     */
-    void preUseTick();
+  /**
+   * What to run before the controller is used during a component update
+   */
+  void preUseTick();
 }
