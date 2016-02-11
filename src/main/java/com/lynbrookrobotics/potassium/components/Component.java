@@ -62,22 +62,22 @@ public abstract class Component<Controller> {
    * Runs one update loop of the component
    */
   public void tick() {
-    Controller toUse = safeties.stream().
-        filter(t -> t._1.get()).
-        map(Tuple2::_2).
-        reduce(
-            currentController,
-            (acc, cur) -> cur.apply(acc),
-            (control1, control2) -> {
-              throw new RuntimeException("Combining controllers makes no sense");
-            }
-        );
+    // Controller toUse = safeties.stream().
+    //     filter(t -> t._1.get()).
+    //     map(Tuple2::_2).
+    //     reduce(
+    //         currentController,
+    //         (acc, cur) -> cur.apply(acc),
+    //         (control1, control2) -> {
+    //           throw new RuntimeException("Combining controllers makes no sense");
+    //         }
+    //     );
 
-    if (toUse instanceof PreUseTick) {
-      ((PreUseTick) toUse).preUseTick();
+    if (currentController instanceof PreUseTick) {
+      ((PreUseTick) currentController).preUseTick();
     }
 
-    setOutputs(toUse);
+    setOutputs(currentController);
   }
 
   /**
