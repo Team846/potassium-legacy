@@ -4,9 +4,6 @@ import com.lynbrookrobotics.potassium.events.ImpulseEvent;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class ButtonPress extends ImpulseEvent {
-    private static final boolean BUTTON_HELD = true;
-    private static final boolean BUTTON_NOT_HELD = false;
-
     Joystick joystick;
     int button;
     boolean lastState;
@@ -22,7 +19,7 @@ public class ButtonPress extends ImpulseEvent {
     protected void checkForTrigger() {
         boolean currentState = joystick.getRawButton(this.button);
 
-        if (this.lastState == BUTTON_NOT_HELD && currentState == BUTTON_HELD) {
+        if (!this.lastState && currentState) {
             trigger();
         }
 
