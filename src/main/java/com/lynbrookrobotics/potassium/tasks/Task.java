@@ -21,7 +21,7 @@ public abstract class Task {
   }
 
   public static void abortCurrentTask() {
-    abortTask(currentTask.get());
+    currentTask.ifPresent(Task::abortTask);
   }
 
   public static void updateCurrentTask() {
