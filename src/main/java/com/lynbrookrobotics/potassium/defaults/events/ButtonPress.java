@@ -8,8 +8,7 @@ public class ButtonPress extends ImpulseEvent {
     int button;
     boolean lastState;
 
-    public ButtonPress(Joystick joystick, int button)
-    {
+    public ButtonPress(Joystick joystick, int button) {
         this.joystick = joystick;
         this.button = button;
         this.lastState = joystick.getRawButton(button);
