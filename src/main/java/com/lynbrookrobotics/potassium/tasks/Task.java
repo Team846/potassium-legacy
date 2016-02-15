@@ -20,6 +20,10 @@ public abstract class Task {
     });
   }
 
+  public static void abortCurrentTask() {
+    currentTask.ifPresent(Task::abortTask);
+  }
+
   public static void updateCurrentTask() {
     currentTask.ifPresent(Task::tick);
   }
