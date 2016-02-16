@@ -1,5 +1,7 @@
 package com.lynbrookrobotics.potassium.events;
 
+import com.lynbrookrobotics.potassium.tasks.Task;
+
 import java.util.LinkedList;
 
 /**
@@ -25,6 +27,14 @@ public abstract class ImpulseEvent extends Event {
    */
   public void forEach(Runnable handler) {
     handlers.add(handler);
+  }
+
+  /**
+   * Attaches a task to run when the event is triggered
+   * @param task the task to run
+   */
+  public void forEach(Task task) {
+    forEach(() -> Task.executeTask(task));
   }
 
   /**
