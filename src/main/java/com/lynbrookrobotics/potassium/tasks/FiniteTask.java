@@ -72,6 +72,28 @@ public abstract class FiniteTask extends Task {
   }
 
   /**
+   * Converts this task to a continuous one.
+   */
+  public ContinuousTask toContinuous() {
+    return new ContinuousTask() {
+      @Override
+      protected void startTask() {
+        startTask();
+      }
+
+      @Override
+      protected void update() {
+        update();
+      }
+
+      @Override
+      protected void endTask() {
+        abort();
+      }
+    };
+  }
+
+  /**
    * Mark the task as finished; should be called from within update to mark the task as completed
    */
   protected void finished() {
