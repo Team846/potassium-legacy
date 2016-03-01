@@ -2,13 +2,17 @@ package com.lynbrookrobotics.potassium.tasks;
 
 import java.util.Optional;
 
+import edu.wpi.first.wpilibj.DriverStation;
+
 public abstract class Task {
   private static Optional<Task> currentTask = Optional.empty();
 
   public static void executeTask(Task task) {
-    currentTask.ifPresent(Task::abort);
-    currentTask = Optional.of(task);
-    task.init();
+    if (DriverStation.getInstance().isEnabled()) {
+      currentTask.ifPresent(Task::abort);
+      currentTask = Optional.of(task);
+      task.init();
+    }
   }
 
   public static void abortTask(Task task) {
@@ -25,7 +29,11 @@ public abstract class Task {
   }
 
   public static void updateCurrentTask() {
-    currentTask.ifPresent(Task::tick);
+    if (DriverStation.getInstance().isDisabled()) {
+      abortCurrentTask();
+    } else {
+      currentTask.ifPresent(Task::tick);
+    }
   }
 
   /**
