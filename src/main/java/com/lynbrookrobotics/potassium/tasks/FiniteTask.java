@@ -27,6 +27,7 @@ public abstract class FiniteTask extends Task {
   protected void abort() {
     if (!isFinished) {
       logger.debug("I am aborting");
+      isFinished = true;
       endTask();
     }
   }
