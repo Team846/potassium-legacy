@@ -81,7 +81,7 @@ public abstract class FiniteTask extends Task {
     return new ContinuousTask() {
       @Override
       protected void startTask() {
-        outer.startTask();
+        outer.init();
       }
 
       @Override
