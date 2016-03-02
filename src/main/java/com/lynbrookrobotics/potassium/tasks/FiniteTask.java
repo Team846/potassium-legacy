@@ -75,20 +75,22 @@ public abstract class FiniteTask extends Task {
    * Converts this task to a continuous one.
    */
   public ContinuousTask toContinuous() {
+    FiniteTask outer = this;
+
     return new ContinuousTask() {
       @Override
       protected void startTask() {
-        startTask();
+        outer.startTask();
       }
 
       @Override
       protected void update() {
-        update();
+        outer.update();
       }
 
       @Override
       protected void endTask() {
-        abort();
+        outer.abort();
       }
     };
   }
