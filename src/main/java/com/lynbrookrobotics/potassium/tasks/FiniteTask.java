@@ -10,6 +10,26 @@ public abstract class FiniteTask extends Task {
   protected Logger logger = LoggerFactory.getLogger(getClass());
   private boolean isFinished = false;
 
+  /**
+   * Produces a finite task that immediately ends.
+   */
+  public static FiniteTask empty() {
+    return new FiniteTask() {
+      @Override
+      protected void startTask() {
+        finished();
+      }
+
+      @Override
+      protected void update() {
+      }
+
+      @Override
+      protected void endTask() {
+      }
+    };
+  }
+
   @Override
   protected void init() {
     isFinished = false;
