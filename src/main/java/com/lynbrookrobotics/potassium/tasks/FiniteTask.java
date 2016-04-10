@@ -92,6 +92,10 @@ public abstract class FiniteTask extends Task {
     return new UntilDoneTask(this, untilDoneTask);
   }
 
+  public TimeoutTask withTimeout(long timeout) {
+    return new TimeoutTask(this, timeout);
+  }
+
   /**
    * Converts this task to a continuous one.
    */
